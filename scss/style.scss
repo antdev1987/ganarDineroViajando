@@ -1,0 +1,545 @@
+@use 'reset';
+@use 'utilities';
+
+@use 'mixins' as *;
+@use 'colors' as *;
+
+// components
+.btn {
+  display: inline-block;
+  border: none;
+
+  cursor: pointer;
+
+  &--radiusSm {
+    border-radius: 1rem;
+  }
+
+  &--radiusMd {
+    border-radius: 3rem;
+  }
+
+  &--radiusBig {
+    border-radius: 5rem;
+  }
+}
+
+.cloud {
+  position: absolute;
+
+  &--md {
+    max-width: 30rem;
+  }
+
+  &--agendar {
+    right: 20rem;
+    bottom: -3rem;
+
+    max-width: 25rem;
+  }
+
+  &--header {
+    top: 5rem;
+    left: 15rem;
+
+    max-width: 25rem;
+
+    z-index: -1;
+  }
+
+  &--wssp {
+    top: -5rem;
+    left: -5rem;
+
+    max-width: 25rem;
+  }
+
+  &--youtube {
+    top: 5rem;
+    right: 30rem;
+
+    max-width: 30rem;
+
+    z-index: -1;
+  }
+
+  &--youtube2 {
+    display: none;
+
+    max-width: 25rem;
+
+    left: 40%;
+    bottom: -3rem;
+
+    z-index: -1;
+
+    @include for-size('tablet-landscape-up') {
+      display: block;
+    }
+  }
+}
+
+.bg-blur {
+  position: relative;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2rem);
+    -webkit-backdrop-filter: blur(2rem);
+
+    z-index: -1;
+  }
+
+  &--portrait {
+    @include afterBlur('tablet-portrait-up');
+  }
+
+  &--medium {
+    @include afterBlur(750px);
+  }
+
+  &--landscape {
+    @include afterBlur('tablet-landscape-up');
+  }
+}
+
+%reset {
+  display: block;
+  width: 100%;
+
+  background: none;
+  border: none;
+  border-bottom: 1px solid $c-white;
+
+  color: $c-white;
+
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.formularioSection__input {
+  padding-bottom: 1rem;
+
+  &::placeholder {
+    font-size: 1.5rem;
+
+    color: $c-white;
+
+    opacity: 0.5;
+
+    text-transform: capitalize;
+  }
+
+  @extend %reset;
+}
+
+.formularioSection__textarea {
+  height: 20rem;
+  @extend %reset;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+
+  padding-right: 2rem;
+  padding-left: 2rem;
+
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: transparent; /* Black w/ opacity */
+  backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2rem);
+
+  &-content {
+    width: 100%;
+    max-width: 45rem;
+
+    border-radius: 1.5rem !important;
+  }
+
+  &__img {
+    max-width: 35rem;
+  }
+
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn {
+    letter-spacing: 0.5rem;
+  }
+}
+
+// components
+.bigImage {
+  display: none;
+  position: absolute;
+  right: -30rem;
+  bottom: 0;
+
+  z-index: 10;
+
+  @include for-size(740px) {
+    display: block;
+    max-width: 65rem;
+  }
+
+  @include for-size(950px) {
+    max-width: 70rem;
+  }
+
+  @include for-size('desktop-up') {
+    max-width: unset;
+  }
+}
+
+.header {
+  position: relative;
+
+  z-index: 5;
+
+  background: url('../images/Portada-principal.jpg') no-repeat center center /
+    cover;
+
+  &--gracias {
+    background: url('../images/FONDO\ GRACIAS.png') no-repeat center center /
+      cover;
+
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
+  }
+
+  &--agenda {
+    clip-path: unset;
+  }
+
+  &__agendarImg {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    z-index: -1;
+
+    max-width: 45rem;
+
+    &--big {
+      max-width: unset;
+      height: 50rem;
+    }
+  }
+
+  &__nubeAgendar {
+    position: absolute;
+
+    right: 25rem;
+    bottom: 2rem;
+
+    z-index: -1;
+    max-width: 30rem;
+  }
+
+  &__title {
+    max-width: 50rem;
+  }
+
+  &__container {
+    max-width: 90rem;
+  }
+}
+
+.duranteViajes {
+  &__boxImg {
+    overflow: hidden;
+
+    @include for-size('tablet-landscape-up') {
+      flex-basis: 20%;
+    }
+  }
+
+  &__cloud {
+    top: 5%;
+    right: 5%;
+
+    &--primeraMano {
+      z-index: -1;
+    }
+  }
+
+  &__img {
+    transform: scale(1.5);
+
+    &--primeraMano {
+      transform: scale(1.2);
+    }
+  }
+
+  &__pin {
+    height: 4rem;
+
+    &--big {
+      height: 7rem;
+    }
+  }
+
+  &__map {
+    background: url(../images/mapamundi.svg) no-repeat center center / cover;
+    // background: red;
+
+    // height: 100vh;
+  }
+
+  &__container {
+    @include for-size('tablet-medium-up') {
+      min-height: 70rem;
+    }
+  }
+
+  &__box {
+    p {
+      margin-right: auto;
+      margin-left: auto;
+      max-width: 25rem;
+    }
+
+    @include for-size('tablet-medium-up') {
+      &--1 {
+        z-index: 10;
+        margin-right: -10rem;
+        margin-bottom: 5rem;
+        align-self: flex-end;
+      }
+
+      &--3 {
+        margin-left: -10rem;
+        align-self: flex-end;
+      }
+    }
+  }
+
+  &__lugar {
+    height: 30rem;
+
+    width: 100%;
+  }
+
+  &__nube {
+    display: none;
+
+    @include for-size('tablet-medium-up') {
+      display: block;
+    }
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    &--1 {
+      max-width: 20rem;
+
+      top: 45%;
+      left: 38%;
+
+      z-index: 11;
+    }
+
+    &--2 {
+      max-width: 30rem;
+
+      top: 50%;
+      left: 60%;
+    }
+  }
+}
+
+.formularioSection {
+  $orange-1: #ff9758;
+  $orange-2: #ffb55b;
+
+  padding-right: 0;
+
+  margin-top: -9rem;
+
+  &__form {
+    background: linear-gradient(to right, $orange-1, $orange-2);
+
+    border-top-left-radius: 5rem;
+  }
+
+  &__btn {
+    letter-spacing: 0.3rem;
+  }
+}
+
+.comunidadSection {
+  background: url(../images/FONDO.png) no-repeat center center / cover;
+
+  overflow-x: hidden;
+
+  z-index: 10;
+
+  &__content {
+    max-width: 50rem;
+  }
+
+  &__title {
+    max-width: 30rem;
+
+    img {
+      position: absolute;
+
+      left: 25rem;
+      bottom: 1rem;
+
+      min-width: 45rem;
+      // width: 100%;
+
+      z-index: -1;
+    }
+  }
+
+  &__img {
+    position: absolute;
+
+    right: -15rem;
+    bottom: 0;
+
+    width: 80rem;
+
+    z-index: -1;
+  }
+}
+
+.linea {
+  $media: 680px;
+
+  @include for-size(1065px) {
+    margin-top: -20rem;
+    padding-top: 20rem;
+  }
+
+  &__cloud {
+    position: absolute;
+
+    display: none;
+
+    @include for-size($media) {
+      display: block;
+    }
+
+    &--1 {
+      max-width: 30rem;
+
+      top: -5rem;
+      right: 35rem;
+    }
+
+    &--2 {
+      max-width: 20rem;
+
+      left: 10rem;
+      bottom: 5rem;
+    }
+
+    &--3 {
+      max-width: 20rem;
+
+      right: 0;
+      bottom: 5rem;
+    }
+  }
+
+  &__img {
+    display: none;
+
+    @include for-size($media) {
+      display: block;
+    }
+  }
+
+  &__container {
+    $size: 2.5rem;
+
+    top: -5rem;
+    right: $size;
+    left: $size;
+    bottom: 0;
+
+    @include for-size($media) {
+      position: absolute;
+      flex-direction: row;
+    }
+  }
+
+  &__box {
+    flex-basis: 14rem;
+
+    img {
+      max-width: 14rem;
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+      @include for-size($media) {
+        align-self: flex-end;
+      }
+    }
+
+    &:nth-child(2) {
+      @include for-size('tablet-medium-up') {
+        margin-left: 0.5rem;
+      }
+      @include for-size('tablet-landscape-up') {
+        margin-left: 2rem;
+      }
+    }
+  }
+}
+
+.wssp {
+  height: 4rem;
+}
+
+.time {
+  &__reloj {
+    height: 9rem;
+  }
+
+  &__ul {
+    position: absolute;
+
+    gap: 1.5rem;
+
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+  }
+}
