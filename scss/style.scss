@@ -182,10 +182,12 @@
 
   /* The Close Button */
   .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    
+    color: $c-white;
+    font-size: 2.5rem;
   }
 
   .close:hover,
