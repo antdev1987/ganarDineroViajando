@@ -784,7 +784,7 @@ h2 {
   border-top-left-radius: 5rem;
 }
 .formularioSection__btn {
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
 }
 
 .comunidadSection {
@@ -898,6 +898,16 @@ h2 {
   top: 50%;
   left: 65%;
   transform: translate(-50%, -50%);
+}
+
+.iframe {
+  display: inline-block;
+  width: 100%;
+}
+@media (min-width: 450px) {
+  .iframe {
+    height: 40rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
